@@ -1,4 +1,8 @@
 #include "utils.h"
+#include "prime.h"
+#include "countdown.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 #define ERR_ARGS_COUNT (-1)
 #define ERR_WRONG_FLG (-2)
@@ -35,27 +39,32 @@ int main(int argc, const char** argv) {
     switch (Test_case) {
         case TST_FOO_FIX: {
             int to = atoi(data);
-            size_t ticks_count = timer_from(to);
-            printf("%d\n", ticks_count);
+            int ticks_count = timer_from(to);
+            printf("%i\n", ticks_count);
             break;
         }
         case TST_FOO_IMPL: {
-            if (argc = 4) {
-                // int base = atoi(data);
-                // int pow =  atoi(argv[3]);
-                // int res = custom_pow(base, pow);    // TODO: Implement me
-
-                // printf("%i\n", res);
+            if (argc == 4) {
+                int base = atoi(data);
+                int pow =  atoi(argv[3]);
+                int res = custom_pow(base, pow);
+                printf("%i\n", res);
             } else {
                 return ERR_ARGS_COUNT;
             }
+            break;
         }
         case TST_MOD_IMPL: {
-            // int num = atoi(data);
+            int num = atoi(data);
+            int res = custom_prime(num);
 
-            // TODO: Print to stdout `1` if `num` is prime number and `0` otherwise
-            // This function MUST be implemented in
-            // a separate C-module (not in `main` or `utils` module)
+            printf("%i\n", res);
+            break;
+        }
+        case 4: {
+            int from = atoi(data);
+            custom_countdown(from);
+            break;
         }
         default: {
             return ERR_WRONG_FLG;

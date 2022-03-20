@@ -1,17 +1,25 @@
 #include "utils.h"
+#include <stdio.h>
 
-size_t timer_from(unsigned char from) {
-    size_t counter;
-    for (unsigned char i = from; i >= 0; --i) {
+int timer_from(int from) {
+    int counter = 0;
+    for (int i = from; i >= 0; --i) {
         ++counter;
-        printf(i);
+        printf("%i", i);
+        if (i > 0) {
+          printf(" ");
+        } else {
+          printf("\n");
+        }
     }
     return counter;
 }
 
-// TODO: Implement `power of` function
-/*
+
 int custom_pow(int base, int power) {
-    return 0;
+    int ans = 1;
+    for (int i = 0; i < power; ++i) {
+      ans *= base;
+    }
+    return ans;
 }
-*/
